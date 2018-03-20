@@ -11,6 +11,7 @@ const app = {
     init() {
         $('#todo-form').submit(app.addTodo);
     },
+  
     addTodo(event) {
         event.preventDefault();
         const { value: todo } = document.getElementById('todo');
@@ -19,8 +20,13 @@ const app = {
 
         const $todoContainer = $('<div />').addClass('col s12 m6 todo');
         const $todoCard = $('<div />').addClass('card-panel');
-        const $todoCheckbox = $('<input type="checkbox" />').attr('id', todoId);
+        const $todoCheckbox = $('<input type="checkbox"/>').attr('id', todoId);
         const $todoText = $('<label />').attr('for', todoId).text(todo);
+
+
+        $todoText.bind( "click", function() {
+            $todoText.toggleClass('lineText')
+        });
 
         $todoCard.append($todoCheckbox);
         $todoCard.append($todoText);
@@ -29,8 +35,12 @@ const app = {
         $('#todos').append($todoContainer);
         
         app.counter = app.counter + 1;
+        
     },
-    counter: 0
+   
+  
+    counter: 0,
+    
 };
 
 $(document).ready(app.init);
