@@ -10,11 +10,12 @@
 const app = {
     init() {
         $('#todo-form').submit(app.addTodo);
+    
     },
     addTodo(event) {
         event.preventDefault();
         const { value: todo } = document.getElementById('todo');
-        
+       
         let todoId = `todo-${app.counter + 1}`;
 
         const $todoContainer = $('<div />').addClass('col s12 m6 todo');
@@ -29,8 +30,17 @@ const app = {
         $('#todos').append($todoContainer);
         
         app.counter = app.counter + 1;
+
+        $todoCheckbox.click(function () {
+            if (this.checked == true) {
+                $todoText.css("text-decoration","line-through");
+            } else if (this.checked == false ) {
+                $todoText.css("text-decoration","none");
+            }
+        })
     },
     counter: 0
+
 };
 
 $(document).ready(app.init);
