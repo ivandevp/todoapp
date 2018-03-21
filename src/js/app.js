@@ -19,7 +19,7 @@ const app = {
 
         const $todoContainer = $('<div />').addClass('col s12 m6 todo');
         const $todoCard = $('<div />').addClass('card-panel');
-        const $todoCheckbox = $('<input type="checkbox" />').attr('id', todoId);
+        const $todoCheckbox = $('<input type="checkbox" />').attr('id', todoId).click(app.check)
         const $todoText = $('<label />').attr('for', todoId).text(todo);
 
         $todoCard.append($todoCheckbox);
@@ -30,16 +30,16 @@ const app = {
         
         app.counter = app.counter + 1;
     },
-    counter: 0
+    counter: 0,
+    check(){
+        if($(this).prop('checked')){
+          this.nextSibling.style.textDecorationLine = 'line-through';
+            
+        } else {
+            this.nextSibling.style.textDecorationLine = 'none';
+        }
+        
+    },
 };
 
 $(document).ready(app.init);
-
-
-
-
-
-
-
-
-
