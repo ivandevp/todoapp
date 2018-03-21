@@ -2,7 +2,7 @@
 <div class="card-panel">
     <input type="checkbox" id="tarea-1" />
     <label for="tarea-1">
-        Tarea 1.                        
+        Tarea 1.
     </label>
 </div>
 </div> */
@@ -14,7 +14,7 @@ const app = {
     addTodo(event) {
         event.preventDefault();
         const { value: todo } = document.getElementById('todo');
-        
+
         let todoId = `todo-${app.counter + 1}`;
 
         const $todoContainer = $('<div />').addClass('col s12 m6 todo');
@@ -27,19 +27,18 @@ const app = {
         $todoContainer.append($todoCard);
 
         $('#todos').append($todoContainer);
-        
+
         app.counter = app.counter + 1;
+
+        $todoCheckbox.click (function (){
+          if(this.checked ===true){
+          $(this).siblings('label').css('text-decoration', 'line-through')
+        } else if (this.checked=== false){
+        $(this).siblings('label').css('text-decoration', 'none')
+        }
+        });
     },
     counter: 0
 };
 
 $(document).ready(app.init);
-
-
-
-
-
-
-
-
-
