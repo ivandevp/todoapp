@@ -29,7 +29,16 @@ const app = {
         $('#todos').append($todoContainer);
         
         app.counter = app.counter + 1;
+
+        $todoCheckbox.change(function (){
+            if(this.checked == true){
+            $todoText.css("text-decoration","line-through")
+            }else{
+                $todoText.css("text-decoration", "none")
+            }
+        });
     },
+    
     counter: 0
 };
 
